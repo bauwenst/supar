@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["./supar"]
+
+[project]
+name = "supar_bauwenst"
+version = "1.2.1"
+requires-python = ">= 3.9"
+authors = [
+  {name = "Yu Zhang", email = "yzhang.cs@outlook.com"}
+]
+maintainers = [
+  {name = "Yu Zhang", email = "yzhang.cs@outlook.com"}
+]
+description = "State-of-the-art parsers for natural language"
+readme = "README.md"
+license-files = ["LICENSE"]
+keywords = ["NLP", "PyTorch", "dependency parsing", "language models", "finetuning", "transformer", "LSTM"]
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Topic :: Scientific/Engineering :: Artificial Intelligence',
+    'Topic :: Text Processing :: Linguistic'
+]
+dependencies = [
+    'numpy>1.21.6',
+    'torch>=1.13.1',
+    'transformers>=4.30.0',
+    'nltk',
+    'stanza',
+    'omegaconf',
+    'dill',
+    'pathos',
+    'opt_einsum'
+]
+
+[project.optional-dependencies]
+elmo = [
+    "allennlp"
+]
+bpe = [
+    "subword-nmt"
+]
+
+[project.urls]
+Source = "https://github.com/yzhangcs/parser"
+Issues = "https://github.com/yzhangcs/parser/issues"
+
+[project.scripts]  # Left-hand side is the name of the command-line utility to create. Right-hand side is which file and which function it runs.
+dep-biaffine = "supar.cmds.dep.biaffine:main"
+dep-crf = "supar.cmds.dep.crf:main"
+dep-crf2o = "supar.cmds.dep.crf2o:main"
+con-aj = "supar.cmds.const.aj:main"
+con-crf = "supar.cmds.const.crf:main"
+con-tt = "supar.cmds.const.tt:main"
+sdp-biaffine = "supar.cmds.sdp.biaffine:main"
+sdp-vi = "supar.cmds.sdp.vi:main"

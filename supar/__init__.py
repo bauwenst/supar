@@ -40,7 +40,7 @@ __all__ = [
     'SemanticDependencyMFVI'
 ]
 
-__version__ = '1.1.4'
+__version__ = '1.2.2'
 
 PARSER = {
     parser.NAME: parser for parser in [
